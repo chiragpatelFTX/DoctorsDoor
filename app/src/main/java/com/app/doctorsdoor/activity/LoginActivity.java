@@ -3,6 +3,7 @@ package com.app.doctorsdoor.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.doctorsdoor.R;
+import com.app.doctorsdoor.common.CustomToast;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity  {
     private EditText mPasswordView;
     private Button mSignInButton;
     private RadioGroup rgUserType;
+    private Context context = LoginActivity.this;
 
 
     @Override
@@ -100,10 +103,9 @@ public class LoginActivity extends AppCompatActivity  {
         // If no Radio Button is set, -1 will be returned
         int selectedId = rgUserType.getCheckedRadioButtonId();
         if (selectedId == -1) {
-           /* Toast.makeText(LoginActivity.this,
-                    "No answer has been selected",
-                    Toast.LENGTH_SHORT)
-                    .show();*/
+            CustomToast.SingleToastShortContext(context,"Please select user Type");
+            return;
+
         }
         else {
 
@@ -111,12 +113,6 @@ public class LoginActivity extends AppCompatActivity  {
                     = (RadioButton)rgUserType
                     .findViewById(selectedId);
 
-            // Now display the value of selected item
-            // by the Toast message
-            /*Toast.makeText(LoginActivity.this,
-                    radioButton.getText(),
-                    Toast.LENGTH_SHORT)
-                    .show();*/
         }
 
 
