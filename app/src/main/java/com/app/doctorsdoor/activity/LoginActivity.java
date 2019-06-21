@@ -100,10 +100,10 @@ public class LoginActivity extends AppCompatActivity  {
         // If no Radio Button is set, -1 will be returned
         int selectedId = rgUserType.getCheckedRadioButtonId();
         if (selectedId == -1) {
-            Toast.makeText(LoginActivity.this,
+           /* Toast.makeText(LoginActivity.this,
                     "No answer has been selected",
                     Toast.LENGTH_SHORT)
-                    .show();
+                    .show();*/
         }
         else {
 
@@ -113,10 +113,10 @@ public class LoginActivity extends AppCompatActivity  {
 
             // Now display the value of selected item
             // by the Toast message
-            Toast.makeText(LoginActivity.this,
+            /*Toast.makeText(LoginActivity.this,
                     radioButton.getText(),
                     Toast.LENGTH_SHORT)
-                    .show();
+                    .show();*/
         }
 
 
