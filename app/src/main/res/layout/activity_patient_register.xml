@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_back">
+
+    <include
+        android:id='@+id/toolbar_patient_register'
+        layout='@layout/toolbar' />
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/register_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_patient_register"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="15dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/sv_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_input_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/name"
+                            android:inputType="text|textCapSentences|textNoSuggestions"
+                            android:maxLength="128"
+                            android:padding="7dp"
+                            android:singleLine="true"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_call_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/phone"
+                            android:inputType="number"
+                            android:maxEms="10"
+                            android:maxLength="10"
+                            android:padding="7dp"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_uhid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:visibility="gone"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_uhid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/uhid"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:background="@drawable/cornor_rect"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:src="@drawable/astric"
+                                android:visibility="gone" />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_top_registration"
+                                android:orientation="horizontal"
+                                android:padding="7dp"
+                                android:weightSum="3">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/cornor_rect"
+                                    android:orientation="horizontal">
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:id="@+id/input_layout_register_bdate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:visibility="visible"
+                                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                                        <TextView
+                                            android:id="@+id/edt_register_patient_bday"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="18dp"
+                                            android:background="?attr/editTextBackground"
+                                            android:drawableRight="@drawable/ic_date_range_black_24dp"
+                                            android:gravity="center_vertical"
+                                            android:hint="@string/birthdate"
+                                            android:onClick="setDate"
+                                            android:padding="7dp"
+                                            android:singleLine="true"
+                                            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+                                            android:textColor="?attr/editTextColor"
+                                            android:textSize="@dimen/login_text_size"
+                                            android:visibility="visible"
+                                             />
+                                    </android.support.design.widget.TextInputLayout>
+
+                                    <ImageView
+                                        android:id="@+id/img_clear_birthdate"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginRight="5dp"
+                                        android:src="@drawable/close"
+                                        android:visibility="gone" />
+                                </LinearLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/input_layout_register_age"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
+                                    android:visibility="visible"
+                                    app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                                    app:hintTextAppearance="@style/TextLabel_Custom">
+
+                                    <EditText
+                                        android:id="@+id/edt_register_patient_age"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="?attr/editTextBackground"
+                                        android:enabled="true"
+                                        android:focusable="true"
+                                        android:gravity="center_vertical"
+                                        android:hint="@string/age"
+                                        android:inputType="number"
+                                        android:maxLength="3"
+                                        android:padding="7dp"
+                                        android:singleLine="true"
+                                        android:textAppearance="?android:attr/textAppearanceMediumInverse"
+                                        android:textColor="?attr/editTextColor"
+                                        android:textSize="@dimen/login_text_size"
+                                        android:visibility="visible"
+                                         />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/cornor_rect_light"
+                                    android:orientation="vertical">
+
+                                    <Spinner
+                                        android:id="@+id/spinner_age_unit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_patient_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/e_mail"
+                            android:inputType="textEmailAddress|textNoSuggestions"
+                            android:maxLength="254"
+                            android:padding="7dp"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_height"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_top_registration"
+                                android:hint="Height"
+                                android:inputType="numberDecimal"
+                                android:maxLength="3" />
+
+                            <Spinner
+                                android:id="@+id/spinner_register_patient_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginTop="@dimen/margin_top_registration"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_weight"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_top_registration"
+                                android:hint="Weight"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="@dimen/margin_top_registration"
+                                android:text="KG"
+                                android:textColor="@android:color/black"
+                                android:textSize="16dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/input_layout_register_pateint_bloodgrp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:background="@drawable/cornor_rect"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_bloodgrp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="3dp"
+                            android:text="Select BloodGroup"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="14dp" />
+
+                        <Spinner
+                            android:id="@+id/spinner_register_patient_bloodgrp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawSelectorOnTop="true"
+                            android:gravity="center_vertical"
+                            android:padding="7dp"
+                            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+                            android:textColor="?attr/editTextColor" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:orientation="horizontal"
+                        android:padding="7dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.5"
+                            android:text="Gender:"
+                            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+                            android:textColor="?attr/editTextColor"
+                            android:textSize="15dp"
+                             />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup_register_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio_register_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Male"
+                                android:textSize="@dimen/login_text_size" />
+
+                            <RadioButton
+                                android:id="@+id/radio_register_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="Female"
+                                android:textSize="@dimen/login_text_size" />
+
+                            <RadioButton
+                                android:id="@+id/radio_register_other"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="Other"
+                                android:textSize="@dimen/login_text_size" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/input_layout_register_pateint_visitype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/login_margin_top"
+                        android:background="@drawable/cornor_rect">
+
+                        <Spinner
+                            android:id="@+id/spinner_register_patient_typevisit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawSelectorOnTop="true"
+                            android:gravity="center_vertical"
+                            android:padding="7dp"
+                            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+                            android:textColor="?attr/editTextColor" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/input_layout_register_patient_relation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/login_margin_top"
+                        android:background="@drawable/cornor_rect"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtReleationship"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/relationship"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/login_text_size"
+                             />
+
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteTextViewrelation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_people_outline_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="Self"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/login_text_size" />
+                    </LinearLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_input_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/address"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="256"
+                            android:padding="7dp"
+                            android:singleLine="true"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_pincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="8dp"
+                                android:hint="@string/pincode"
+                                android:inputType="text|textCapSentences"
+                                android:maxLength="6"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/login_text_size"
+                                 />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="8dp"
+                                android:hint="@string/city"
+                                android:inputType="text|textCapSentences"
+                                android:maxLength="32"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/login_text_size"
+                                 />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/state"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="32"
+                            android:padding="7dp"
+                            android:singleLine="true"
+                            android:textSize="@dimen/login_text_size"
+                             />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <EditText
+                        android:id="@+id/edt_register_patient_diagnocis"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/cornor_rect"
+                        android:gravity="top"
+                        android:hint="@string/diagnosis"
+                        android:inputType="textMultiLine|textNoSuggestions"
+                        android:lines="3"
+                        android:maxLength="150"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:padding="7dp"
+                        android:scrollbars="vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/login_text_size"
+                         />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/login_margin_top">
+
+
+        <CheckBox
+            android:id="@+id/chk_register_unIdentified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="itemClicked"
+            android:text="Unidentified"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btn_register_patient_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chk_register_unIdentified"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/cornor_rect_button"
+            android:padding="@dimen/login_button_padding"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_text_size"
+             />
+
+
+    </RelativeLayout>
+</RelativeLayout>
