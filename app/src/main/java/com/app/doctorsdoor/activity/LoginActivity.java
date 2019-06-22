@@ -2,8 +2,8 @@ package com.app.doctorsdoor.activity;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity  {
     private Button mSignInButton;
     private RadioGroup rgUserType;
     private Context context = LoginActivity.this;
+    SpannableStringBuilder builder;
 
 
     @Override
@@ -73,6 +74,7 @@ public class LoginActivity extends AppCompatActivity  {
         rgUserType.clearCheck();
 
 
+
     }
 
 
@@ -87,24 +89,36 @@ public class LoginActivity extends AppCompatActivity  {
         // If no Radio Button is set, -1 will be returned
         int selectedId = rgUserType.getCheckedRadioButtonId();
         if (selectedId == -1) {
-            CustomToast.SingleToastShortContext(context,"Please select user Type");
+            CustomToast.SingleToastShortContext(context,
+                    getApplicationContext().getResources().getString(R.string.user_not_selected));
             return;
 
         }
         else {
 
             RadioButton radioButton
-                    = (RadioButton)rgUserType
+                    = rgUserType
                     .findViewById(selectedId);
+            if (radioButton != null && edtPhno != null && mPasswordView != null) {
+                if (radioButton.getText().toString().length() > 0 &&
+                        isPhnoValid(edtPhno.getText().toString()) &&
+                        isPasswordValid(mPasswordView.getText().toString().trim())) {
+                    //make login request
+                }
+            }
 
         }
 
 
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isPhnoValid(String phno) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        if (phno != null && phno.length() < 10) {
+            edtPhno.setError(getApplicationContext().getResources().getString(R.string.error_invalid_email));
+            return false;
+        }
+        return true;
     }
 
     private boolean isPasswordValid(String password) {
