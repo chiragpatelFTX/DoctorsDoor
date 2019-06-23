@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -196,7 +197,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:layout_weight="1"
-                                    android:visibility="visible"
+                                    android:visibility="gone"
                                     app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
                                     app:hintTextAppearance="@style/TextLabel_Custom">
 
@@ -225,6 +226,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="15dp"
                                     android:layout_weight="1"
+                                    android:visibility="gone"
                                     android:background="@drawable/cornor_rect_light"
                                     android:orientation="vertical">
 
@@ -267,6 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -420,6 +423,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/login_margin_top"
+                        android:visibility="gone"
                         android:background="@drawable/cornor_rect">
 
                         <Spinner
@@ -440,6 +444,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/login_margin_top"
+                        android:visibility="gone"
                         android:background="@drawable/cornor_rect"
                         android:orientation="vertical">
 
@@ -566,6 +571,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/cornor_rect"
                         android:gravity="top"
+                        android:visibility="gone"
                         android:hint="@string/diagnosis"
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:lines="3"
@@ -575,8 +581,7 @@
                         android:padding="7dp"
                         android:scrollbars="vertical"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/login_text_size"
-                         />
+                        android:textSize="@dimen/login_text_size" />
 
                 </LinearLayout>
             </ScrollView>
@@ -599,6 +604,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="itemClicked"
+            android:visibility="gone"
             android:text="Unidentified"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
