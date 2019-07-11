@@ -1,9 +1,9 @@
 package com.app.doctorsdoor.activity;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,24 +11,32 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
 import com.app.doctorsdoor.R;
 import com.app.doctorsdoor.common.CustomToast;
+import com.app.doctorsdoor.model.User;
+import com.app.doctorsdoor.rest.LoginRequest;
+import com.app.doctorsdoor.storage.Constants;
+import com.app.doctorsdoor.storage.LocalStorage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
 
     // UI references.
     private EditText edtPhno;
     private EditText mPasswordView;
     private Button mSignInButton;
     private RadioGroup rgUserType;
+    private TextView txtSignUP;
     private Context context = LoginActivity.this;
-    SpannableStringBuilder builder;
 
 
     @Override
@@ -40,6 +48,10 @@ public class LoginActivity extends AppCompatActivity  {
 
         initViews();
 
+        if (LocalStorage.read(Constants.storage.USER_ID, null) != null) {
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+        }
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -59,21 +71,39 @@ public class LoginActivity extends AppCompatActivity  {
             }
         });
 
+        txtSignUP.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (edtPhno != null && mPasswordView != null) {
+
+                    Intent intent = new Intent(context, PatientRegisterActivity.class);
+                    intent.putExtra("USERNAME", edtPhno.getText().toString().trim());
+                    startActivity(intent);
+
+                } else {
+                    CustomToast.SingleToastShortContext(context, "Enter Empty Details");
+                }
+
+
+            }
+        });
+
 
     }
 
     private void initViews() {
         // Set up the login form.
-        edtPhno =  findViewById(R.id.edt_phno);
+        edtPhno = findViewById(R.id.edt_phno);
         // populateAutoComplete();
 
-        mPasswordView =  findViewById(R.id.password);
+        mPasswordView = findViewById(R.id.password);
         mSignInButton = findViewById(R.id.email_sign_in_button);
         rgUserType = findViewById(R.id.rg_usertype);
+        txtSignUP = findViewById(R.id.txt_signup);
         // Uncheck or reset the radio buttons initially
         rgUserType.clearCheck();
-
-
 
     }
 
@@ -84,29 +114,25 @@ public class LoginActivity extends AppCompatActivity  {
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        // When submit button is clicked,
-        // Ge the Radio Button which is set
-        // If no Radio Button is set, -1 will be returned
-        int selectedId = rgUserType.getCheckedRadioButtonId();
-        if (selectedId == -1) {
-            CustomToast.SingleToastShortContext(context,
-                    getApplicationContext().getResources().getString(R.string.user_not_selected));
-            return;
 
-        }
-        else {
 
-            RadioButton radioButton
-                    = rgUserType
-                    .findViewById(selectedId);
-            if (radioButton != null && edtPhno != null && mPasswordView != null) {
-                if (radioButton.getText().toString().length() > 0 &&
-                        isPhnoValid(edtPhno.getText().toString()) &&
+        if (isPhnoValid(edtPhno.getText().toString()) &&
                         isPasswordValid(mPasswordView.getText().toString().trim())) {
-                    //make login request
-                }
+            //make login request
+            User user = new User();
+            user.setUsername(edtPhno.getText().toString().trim());
+            user.setPassword(mPasswordView.getText().toString().trim());
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("username", edtPhno.getText().toString().trim());
+                jsonObject.put("password", mPasswordView.getText().toString().trim());
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
+            LoginRequest loginRequest = new LoginRequest();
+            loginRequest.login(jsonObject.toString(), context);
         }
 
 
@@ -123,10 +149,8 @@ public class LoginActivity extends AppCompatActivity  {
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 2;
     }
-
-
 
 
 }

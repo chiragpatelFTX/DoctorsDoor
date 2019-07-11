@@ -46,29 +46,102 @@
                     android:orientation="vertical"
                     android:padding="5dp">
 
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/input_layout_register_input_name"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_top_registration"
-                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
-                        app:hintTextAppearance="@style/TextLabel_Custom">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:weightSum="3"
+                        android:padding="@dimen/activity_vertical_margin">
 
-                        <EditText
-                            android:id="@+id/edt_register_patient_name"
+                        <RadioGroup
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
-                            android:drawablePadding="8dp"
-                            android:hint="@string/name"
-                            android:inputType="text|textCapSentences|textNoSuggestions"
-                            android:maxLength="128"
-                            android:padding="7dp"
-                            android:singleLine="true"
-                            android:textSize="@dimen/login_text_size"
-                             />
-                    </android.support.design.widget.TextInputLayout>
+                            android:id="@+id/rg_usertype"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:id="@+id/rb_doctor"
+                                android:checked="true"
+                                android:text="@string/doctor"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:text="@string/patient"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <RadioButton
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:text="@string/employee"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_layout_register_input_fname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_top_registration"
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                                android:drawablePadding="8dp"
+                                android:hint="@string/name"
+                                android:inputType="text|textCapSentences|textNoSuggestions"
+                                android:maxLength="128"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/login_text_size" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_layout_register_input_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_top_registration"
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_lname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                                android:drawablePadding="8dp"
+                                android:hint="@string/lastname"
+                                android:inputType="text|textCapSentences|textNoSuggestions"
+                                android:maxLength="128"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/login_text_size" />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_layout_register_phone"
@@ -91,6 +164,28 @@
                             android:padding="7dp"
                             android:textSize="@dimen/login_text_size"
                              />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_register_pwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_register_patient_pwd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                            android:drawablePadding="8dp"
+                            android:hint="@string/prompt_password"
+                            android:inputType="textPassword"
+                            android:maxEms="10"
+                            android:maxLength="10"
+                            android:padding="7dp"
+                            android:textSize="@dimen/login_text_size" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -376,7 +471,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_weight="1.5"
+                            android:layout_weight="1.6"
                             android:text="Gender:"
                             android:textAppearance="?android:attr/textAppearanceMediumInverse"
                             android:textColor="?attr/editTextColor"
@@ -544,25 +639,55 @@
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
-                        app:hintTextAppearance="@style/TextLabel_Custom">
+                        android:weightSum="2"
+                        android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/edt_register_patient_state"
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawablePadding="8dp"
-                            android:hint="@string/state"
-                            android:inputType="text|textCapSentences"
-                            android:maxLength="32"
-                            android:padding="7dp"
-                            android:singleLine="true"
-                            android:textSize="@dimen/login_text_size"
-                             />
-                    </android.support.design.widget.TextInputLayout>
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_state"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="8dp"
+                                android:layout_weight="1"
+                                android:hint="@string/state"
+                                android:inputType="text|textCapSentences"
+                                android:maxLength="32"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/login_text_size" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                            app:hintTextAppearance="@style/TextLabel_Custom">
+
+                            <EditText
+                                android:id="@+id/edt_register_patient_country"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="8dp"
+                                android:hint="@string/country"
+                                android:inputType="text|textCapSentences"
+                                android:maxLength="32"
+                                android:padding="7dp"
+                                android:singleLine="true"
+                                android:layout_weight="1"
+                                android:textSize="@dimen/login_text_size" />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
 
                     <EditText
                         android:id="@+id/edt_register_patient_diagnocis"
@@ -618,7 +743,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/cornor_rect_button"
             android:padding="@dimen/login_button_padding"
-            android:text="@string/submit"
+            android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="@dimen/login_text_size"
              />

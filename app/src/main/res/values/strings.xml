@@ -21,12 +21,12 @@
     </string>
     <string name="prompt_phone">Phone No</string>
     <string name="doctor">Doctor</string>
-    <string name="patient">patient</string>
+    <string name="patient">Patient</string>
     <string name="employee">Employee</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="signup">Don\'t have an account?  <u><b>Sign Up</b></u></string>
     <string name="go_without_login">Go Without  login</string>
-    <string name="name">Name</string>
+    <string name="name">First Name</string>
     <string name="phone">Phone</string>
     <string name="birthdate">BirthDay</string>
     <string name="age">Age</string>
@@ -40,6 +40,22 @@
     <string name="city">City</string>
     <string name="state">State</string>
     <string name="diagnosis">Diagnosis</string>
-    <string name="submit">Sign Up</string>
+    <string name="submit">Submit</string>
+    <string name="sign_up">Sign Up</string>
     <string name="user_not_selected">Please Select User</string>
+    <string name="country">Country</string>
+    <string name="lastname">Last Name</string>
+    <string name="degree">Degree</string>
+    <string name="experience">Experience</string>
+    <string name="registration">Registeration Number</string>
+    <string name="newfee">New Fee</string>
+    <string name="old_fee">Old Fee</string>
+    <string name="consultant">Consulatant</string>
+    <string name="bank_no">Bank Account No</string>
+    <string name="ifsc_code">IFSC Code</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="hospital_city">City</string>
+    <string name="opening_time">Opening Time</string>
+    <string name="closing_time">Closing Time</string>
+    <string name="loading">Loading..</string>
 </resources>
