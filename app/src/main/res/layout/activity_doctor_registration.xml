@@ -70,7 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/phone"
-                            android:inputType="text|textCapSentences|textNoSuggestions"
+                            android:inputType="number"
                             android:maxLength="128"
                             android:padding="7dp"
                             android:singleLine="true"
@@ -110,7 +110,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/experience"
-                            android:inputType="number"
                             android:padding="7dp"
                             android:singleLine="true"
                             android:textSize="@dimen/login_text_size" />
@@ -129,7 +128,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/registration"
-                            android:inputType="number"
                             android:padding="7dp"
                             android:singleLine="true"
                             android:textSize="@dimen/login_text_size" />
@@ -214,6 +212,42 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/bank_no"
                             android:inputType="number"
+                            android:padding="7dp"
+                            android:singleLine="true"
+                            android:textSize="@dimen/login_text_size" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:layout_weight="1"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_bank_account_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/bank_account_name"
+                            android:padding="7dp"
+                            android:singleLine="true"
+                            android:textSize="@dimen/login_text_size" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_registration"
+                        android:layout_weight="1"
+                        app:errorTextAppearance="@style/CustomTextInputLayoutStyle"
+                        app:hintTextAppearance="@style/TextLabel_Custom">
+
+                        <EditText
+                            android:id="@+id/edt_bank_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/bank_name"
                             android:padding="7dp"
                             android:singleLine="true"
                             android:textSize="@dimen/login_text_size" />

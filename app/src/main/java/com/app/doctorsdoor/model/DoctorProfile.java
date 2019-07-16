@@ -4,7 +4,25 @@ package com.app.doctorsdoor.model;
  * Created by Damini Mehra on 30-06-2019 at 19:37.
  */
 public class DoctorProfile {
-    private String user_id, degree, experience, registration_no, consultant, ifsc_code;
+
+    private String user_id, degree, experience, registration_no, consultant, ifsc_code, bank_name, bank_account_name;
+
+    public String getBank_name() {
+        return bank_name;
+    }
+
+    public void setBank_name(String bank_name) {
+        this.bank_name = bank_name;
+    }
+
+    public String getBank_account_name() {
+        return bank_account_name;
+    }
+
+    public void setBank_account_name(String bank_account_name) {
+        this.bank_account_name = bank_account_name;
+    }
+
     private long new_case_fee, old_case_fee, bank_account_no;
 
     public String getUser_id() {

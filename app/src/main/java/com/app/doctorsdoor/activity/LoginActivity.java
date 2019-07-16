@@ -48,10 +48,10 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
 
-        if (LocalStorage.read(Constants.storage.USER_ID, null) != null) {
+     /*   if (LocalStorage.read(Constants.storage.USER_ID, null) != null) {
             Intent intent = new Intent(context, MainActivity.class);
             startActivity(intent);
-        }
+        }*/
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -132,14 +132,14 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             LoginRequest loginRequest = new LoginRequest();
-            loginRequest.login(jsonObject.toString(), context);
+            loginRequest.login(jsonObject.toString(), context, "login");
         }
 
 
     }
 
     private boolean isPhnoValid(String phno) {
-        //TODO: Replace this with your own logic
+
         if (phno != null && phno.length() < 10) {
             edtPhno.setError(getApplicationContext().getResources().getString(R.string.error_invalid_email));
             return false;
@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
+
         return password.length() > 2;
     }
 

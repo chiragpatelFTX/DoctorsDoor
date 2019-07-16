@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.app.doctorsdoor.R;
+import com.app.doctorsdoor.activity.DoctorRegistrationActivity;
 import com.app.doctorsdoor.activity.MainActivity;
 import com.app.doctorsdoor.common.CustomToast;
 import com.app.doctorsdoor.common.ProgressDialogCustom;
@@ -26,11 +27,12 @@ import org.json.JSONObject;
 public class LoginRequest implements WebResponsible {
     private final int LOGIN_REQUEST = 302;
     private Context context;
-    String json;
+    String json, loginType;
 
-    public void login(String json, Context context) {
+    public void login(String json, Context context, String loginType) {
         this.json = json;
         this.context = context;
+        this.loginType = loginType;
         ProgressDialogCustom.pDialog = new ProgressDialog(context);
         ProgressDialogCustom.pDialog.setMessage(context.getString(R.string.loading));
         ProgressDialogCustom.pDialog.setCanceledOnTouchOutside(false);
@@ -61,14 +63,20 @@ public class LoginRequest implements WebResponsible {
             }
             CustomToast.SingleToastShortContext(context, "Login Successfully");
             try {
+
                 JSONObject jsonObject = new JSONObject(data.getData());
                 JSONObject jsonPassword = new JSONObject(json);
                 LocalStorage.save(Constants.storage.USER_NAME, jsonObject.getString(Constants.storage.USER_NAME));
                 LocalStorage.save(Constants.storage.PASSWORD, jsonPassword.getString(Constants.storage.PASSWORD));
                 LocalStorage.save(Constants.storage.USER_ID, jsonObject.getString(Constants.storage.USER_ID));
                 LocalStorage.save(Constants.storage.USER_JSON, data.getData());
-                Intent intent = new Intent(context, MainActivity.class);
-                context.startActivity(intent);
+                if (loginType.equalsIgnoreCase("login")) {
+                    Intent intent = new Intent(context, MainActivity.class);
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, DoctorRegistrationActivity.class);
+                    context.startActivity(intent);
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -8,10 +8,14 @@ import android.widget.EditText;
 
 import com.app.doctorsdoor.R;
 import com.app.doctorsdoor.model.DoctorProfile;
+import com.app.doctorsdoor.rest.SignuUpRequest;
+import com.app.doctorsdoor.storage.Constants;
+import com.app.doctorsdoor.storage.LocalStorage;
+import com.google.gson.Gson;
 
 public class DoctorRegistrationActivity extends AppCompatActivity {
     private EditText edtDegree, edtExp, edtRgNo, edtNewFee,
-            edtOldFee, edtConsultant, edtBankAccountNo, edtIFSC;
+            edtOldFee, edtConsultant, edtBankAccountNo, edtIFSC, edtBankName, edtAccountName;
     private Button btnSubmit;
 
     @Override
@@ -30,6 +34,8 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                         && edtConsultant.getText().toString().length() > 0
                         && edtBankAccountNo.getText().toString().length() > 0
                         && edtIFSC.getText().toString().length() > 0
+                        && edtAccountName.getText().toString().length() > 0
+                        && edtBankName.getText().toString().length() > 0
                 ) {
                     DoctorProfile doctorProfile = new DoctorProfile();
                     doctorProfile.setDegree(edtDegree.getText().toString());
@@ -40,6 +46,12 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                     doctorProfile.setConsultant(edtConsultant.getText().toString());
                     doctorProfile.setBank_account_no(Long.parseLong(edtBankAccountNo.getText().toString()));
                     doctorProfile.setIfsc_code(edtIFSC.getText().toString());
+                    doctorProfile.setUser_id(LocalStorage.read(Constants.storage.USER_ID, "0"));
+                    doctorProfile.setBank_account_name(edtAccountName.getText().toString());
+                    doctorProfile.setBank_name(edtBankName.getText().toString());
+                    SignuUpRequest signuUpRequest = new SignuUpRequest();
+                    Gson gson = new Gson();
+                    signuUpRequest.doctorRegister(gson.toJson(doctorProfile), DoctorRegistrationActivity.this);
                 }
             }
         });
@@ -54,6 +66,8 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         edtConsultant = findViewById(R.id.edt_consultant);
         edtBankAccountNo = findViewById(R.id.edt_bank_no);
         edtIFSC = findViewById(R.id.edt_ifsc_code);
+        edtBankName = findViewById(R.id.edt_bank_name);
+        edtBankAccountNo = findViewById(R.id.edt_bank_account_name);
         btnSubmit = findViewById(R.id.btn_submit);
     }
 }
